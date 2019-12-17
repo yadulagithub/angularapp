@@ -1,0 +1,14 @@
+Create a new project foler  
+make a new folder 
+make server folder 
+under server folder create models controllers utils 
+create server.js ( can be any name )
+
+go back to project folder 
+npm init -y
+yarn add express mongoose   or npm i express mongoose --save
+
+
+
+
+

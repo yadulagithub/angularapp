@@ -1,0 +1,23 @@
+<fieldset>
+  <legend>Update a Planet</legend>
+  <form (submit)="updatePlanet(onePlanet._id)">
+    <div>
+      Name: 
+      <input type="text" name="onePlanet.name" [(ngModel)]="onePlanet.name">
+      <span *ngIf="error2s.name">{{ error2s.name.message }}</span>
+    </div>
+    <div>
+      Color: 
+      <input type="text" name="onePlanet.color" [(ngModel)]="onePlanet.color">
+      <span *ngIf="error2s.color">{{ error2s.color.message }}</span>
+    </div>
+    <div>
+      # Moons: 
+      <input type="number" name="onePlanet.numMoons" [(ngModel)]="onePlanet.numMoons">
+      <span *ngIf="error2s.numMoons">{{ error2s.numMoons.message }}</span>
+    </div>
+    <div>Has Rings?: <input type="checkbox" name="onePlanet.hasRings" [(ngModel)]="onePlanet.hasRings" checked></div>
+    <input type="submit" value="Update that planet!">
+    <button [routerLink]="['/']">Cancel that update!</button>
+  </form>
+</fieldset>

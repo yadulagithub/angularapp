@@ -1,0 +1,22 @@
+<fieldset *ngIf="!isUpdating">
+  <legend>Add a Planet</legend>
+  <form (submit)="addPlanet()">
+    <div>
+      Name: 
+      <input type="text" name="newPlanet.name" [(ngModel)]="newPlanet.name">
+      <span *ngIf="errors.name">{{ errors.name.message }}</span>
+    </div>
+    <div>
+      Color: 
+      <input type="text" name="newPlanet.color" [(ngModel)]="newPlanet.color">
+      <span *ngIf="errors.color">{{ errors.color.message }}</span>
+    </div>
+    <div>
+      # Moons: 
+      <input type="number" name="newPlanet.numMoons" [(ngModel)]="newPlanet.numMoons">
+      <span *ngIf="errors.numMoons">{{ errors.numMoons.message }}</span>
+    </div>
+    <div>Has Rings?: <input type="checkbox" name="newPlanet.hasRings" [(ngModel)]="newPlanet.hasRings"></div>
+    <input type="submit" value="Add your planet!">
+  </form>
+</fieldset>

@@ -1,0 +1,55 @@
+<h1>Pet Shelter</h1>
+<h4>Know of a pet needing a home</h4>
+<fieldset *ngIf="!isUpdating">
+    <legend>Add a Pet</legend>
+    <form (submit)="addPet()">
+      <div>
+        <p>
+          <label>Pet Name:</label> 
+          <input type="text" name="newPet.name" [(ngModel)]="newPet.name">
+          <span *ngIf="errors.name">{{ errors.name.message }}</span>
+        </p>
+      </div>
+      <div>
+        <p>
+          <label>Pet Type:</label> 
+          <input type="text" name="newPet.type" [(ngModel)]="newPet.type">
+          <span *ngIf="errors.type">{{ errors.type.message }}</span>
+        </p>
+      </div>
+      <div>
+        <p>
+          <label>Descritpion:</label> 
+          <input type="text" name="newPet.decription" [(ngModel)]="newPet.description">
+          <span *ngIf="errors.description">{{ errors.description.message }}</span>
+        </p>
+      </div>
+      
+      <div>
+       
+        <table>
+          <tr>
+            <td>Skills:</td>
+            <td><input type="text" name="newPet.skill1" [(ngModel)]="newPet.skill1">
+              <span *ngIf="errors.skill1">{{ errors.skill1.message }}</span>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><input type="text" name="newPet.skill2" [(ngModel)]="newPet.skill2">
+              <span *ngIf="errors.skill2">{{ errors.skill2.message }}</span></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><input type="text" name="newPet.skill3" [(ngModel)]="newPet.skill3">
+              <span *ngIf="errors.skill3">{{ errors.skill3.message }}</span></td>
+          </tr>
+       
+        </table>
+
+
+      </div>
+      <p>      <input type="submit" value="Add Pet"> <button class="right" [routerLink]="['/']">Cancel</button> </p>
+      
+    </form>
+  </fieldset>

@@ -1,0 +1,52 @@
+<fieldset>
+    <legend>Edit this pet</legend>
+    <form (submit)="updatePet(onePet._id)">
+      <div>
+        <p>
+          Name: {{onePet.name}}
+          
+        </p>
+      </div>
+      <div>
+        <p>
+          Type: 
+          <input type="text" name="onePet.type" [(ngModel)]="onePet.type">
+          <span *ngIf="error2s.type">{{ error2s.type.message }}</span>
+        </p>
+      </div>
+      <div>
+        <p>
+          Description: 
+          <input type="text" name="onePet.description" [(ngModel)]="onePet.description">
+          <span *ngIf="error2s.description">{{ error2s.description.message }}</span>
+        </p>
+      </div>
+
+      <div>
+        
+          <table>
+            <tr>
+              <td>Skills:</td>
+              <td><input type="text" name="onePet.skill1" [(ngModel)]="onePet.skill1">
+                <span *ngIf="error2s.skill1">{{ error2s.skill1.message }}</span>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><input type="text" name="onePet.skill2" [(ngModel)]="onePet.skill2">
+                <span *ngIf="error2s.skill2">{{ error2s.skill2.message }}</span></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><input type="text" name="onePet.skill3" [(ngModel)]="onePet.skill3">
+                <span *ngIf="error2s.skill3">{{ error2s.skill3.message }}</span></td>
+            </tr>
+         
+          </table>
+      </div>
+      <p>
+        <input type="submit" value="Edit Pet">
+        <button class="right" [routerLink]="['/']">Cancel</button>
+      </p>
+    </form>
+  </fieldset>

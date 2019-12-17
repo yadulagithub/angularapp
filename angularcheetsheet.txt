@@ -1,0 +1,58 @@
+Angular 
+
+ng new RestfulTasks
+C:\Users\ychod\sites\angularapp>cd RestfulTasks
+
+C:\Users\ychod\sites\angularapp\RestfulTasks>
+
+http.service.ts - Model
+app.component.ts - controller
+app.component.html - view
+
+
+The ng build is to build artifacts.
+
+The ng serve command is to pre-install packages and start the app.
+for client you need to run ng build -w 
+
+
+ng g s servicename  ( this could be http whic generates http.sevice.ts, http.service.spc.ts )
+ng serve to run the server  if we are just using front end and not back end 
+
+
+Make sure mongod.exe or mongo.exe is running or compass is running.
+
+run nodemon server.js ( whatever js file for backend) in the backend (main) project folder.
+ng build --watch if we are doing front end and backend at the same time. In this case the angular folder needs to be under the front end project folder
+e.g. restfultasks folder in under restfulapi folder.
+in this case we do npm start under the backend folder (restfulapi)
+and ng build --watch under the front end folder. 
+
+if we are running on 8000 port test by using 
+
+localhost:8000
+
+Make sure path is defined in server.js (js of the backend.
+app.use(express.static(__dirname + "/RestfulTasks/dist/RestfulTasks"));
+
+for error cannot bind to ngmodle since it is not known property of <input> div
+if you are using input div make sure to add in app.module.ts
+import { FormsModule } from '@angular/forms';
+
+
+ng g c componentname
+
+
+Note : if you download a project from somewhere 
+go to the project folder and do 'npm i' in it to build node-modules.
+same thing for the client ( or whatever folder angular folder created by ng new ) for angular. Do 'npm i'
+in the angular folder
+
+to build a routing module for angular app when not created at the creation time do follwoing
+go to the angular folder e.g. client in pur case. 
+ng generate module app-routing --flat --module=app
+
+
+
+
+

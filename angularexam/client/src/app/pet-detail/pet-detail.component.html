@@ -1,0 +1,47 @@
+<fieldset>
+    <legend>Deatials about {{onePet.name}}</legend>
+    <form (submit)="getPet(onePet._id)">
+      <div>
+        <p>Name: {{onePet.name}}</p>
+      </div>
+      <div>
+        <p>Type: {{onePet.type}}</p>
+        
+      </div>
+      <div>
+        <p>Description: {{onePet.description}}</p>
+        
+      </div>
+      <div>
+        <table>
+          <tr>
+            <td>Skills:</td>
+            <td>{{onePet.skill1}}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>{{onePet.skill2}}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>{{onePet.skill3}}</td>
+          </tr>
+       
+        </table>
+
+      </div>
+
+      
+      <div class="container">
+        <div>
+          <p>Likes: {{onePet.likes}}</p>
+          <button type = "button"  (click)="incCount($event, onePet._id)" class="btn btn-default form-control increaseBtn">Likes</button>
+          <button type = "button"  class = "right" (click)="delPet(onePet._id)">Adopt a pet</button>
+          <button type = "button" class = "right" [routerLink]="['/']">Home</button>
+        </div>
+        
+      </div>
+      
+      
+    </form>
+  </fieldset>

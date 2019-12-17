@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Edit your planet</h3>
+    <form action="/planet/<%= planet._id %>" method="post">
+        <p>Name: <input type="text" name="name" value="<%= planet.name %>" /></p>
+        <p>Color: <input type="text" name="color" value="<%= planet.color %>" /></p>
+        <p>Number of Moons: <input type="number" name="numMoons" min="0" value="<%= planet.numMoons %>" /></p>
+        <% if (planet.hasRings) { %>
+            <p><label> Has Rings? <input type="checkbox" name="hasRings" checked /></label></p>
+        <% } else { %>
+            <p><label> Has Rings? <input type="checkbox" name="hasRings" /></label></p>
+        <% } %>
+        <input type="submit">
+    </form>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Planets are out there</h1>
+    <table border=1>
+        <tr>
+            <th>Name</th>
+            <th>Color</th>
+            <th># Moons</th>
+            <th>Has Rings?</th>
+            <th>Edit</th>
+        </tr>
+        <% for(let i=0; i<planets.length; i++) { %>
+            <tr>
+                <td><%= planets[i].name %></td>
+                <td><%= planets[i].color %></td>
+                <td><%= planets[i].numMoons %></td>
+                <td><%= planets[i].hasRings %></td>
+                <td><a href="/planet/<%= planets[i]._id %>">Edit</a></td>
+            </tr>
+        <% } %>
+    </table>
+    <form action="/planet" method="post">
+        <p>Name: <input type="text" name="name" /></p>
+        <p>Color: <input type="text" name="color" /></p>
+        <p>Number of Moons: <input type="number" name="numMoons" min="0" /></p>
+        <p><label> Has Rings? <input type="checkbox" name="hasRings" /></label></p>
+        <input type="submit">
+    </form>
+</body>
+</html>

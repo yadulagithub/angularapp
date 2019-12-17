@@ -1,0 +1,14 @@
+<h1>Have some jokes</h1>
+
+<h4>{{ data.setup }}</h4>
+<em *ngIf="showPunchline">{{ data.punchline }}</em>
+<em *ngIf="!showPunchline">...</em>
+
+<hr>
+
+<button (click)="toggleJokeVisibility()">Show Punchline</button>
+<button (click)="showAnotherJoke()">Show Another Joke</button>
+
+<hr>
+
+<button (click)="sendJoke()">You don't want to</button>

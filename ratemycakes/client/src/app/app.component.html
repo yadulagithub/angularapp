@@ -1,0 +1,77 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<h1>Cakes are tasty!</h1>
+
+<!-- {{ cakes | json }} -->
+
+<fieldset>
+  <legend>It's a piece of cake to bake a pretty cake!</legend>
+  <form (submit)="getBaked()">
+    <div>
+      <label>Cake Name:</label>
+      <input type="text" name="newCake.name" [(ngModel)]="newCake.name" />
+    </div>
+    <div>
+      <label>Baker Name:</label>
+      <input type="text" name="newCake.baker" [(ngModel)]="newCake.baker" />
+    </div>
+    <div>
+      <label>Cake Image:</label>
+      <input type="file" (change)="fileUpload($event)" />
+    </div>
+    <input type="submit" value="Get Baking!" />
+  </form>
+</fieldset>
+
+<fieldset>
+  <legend>Let them eat cake!</legend>
+  <div *ngFor="let cake of cakes; index as i">
+    <div style="display: inline-block; width: 400px; vertical-align: top;">
+      <h1>{{ cake.name }}</h1>
+      <h3>By: {{ cake.baker }}</h3>
+      <img src="{{ cake.image }}" alt="it's a cake" width="250px" />
+      <p>Some reviews:</p>
+      <p *ngFor="let review of cake.reviews">
+        <strong>{{ review.name }} says:</strong>
+        {{ review.comment }}
+        <em>({{ review.rating }} star(s))</em>
+      </p>
+    </div>
+    <div style="display: inline-block; width: 400px; vertical-align: top;">
+      <br><br>
+      <button (click)="toggleReviewForm(i)">Leave a Review!</button>
+      <br><br>
+      <form *ngIf="cake.isReviewing" (submit)="leaveReview(cake._id)">
+        <div>
+          <label>Reviewer Name:</label>
+          <input type="text" name="review.name" [(ngModel)]="review.name" />
+        </div>
+        <div>
+          <label>Rating:</label>
+          <select name="review.rating" [(ngModel)]="review.rating">
+            <option value="1">☆☆☆☆★</option>
+            <option value="2">☆☆☆★★</option>
+            <option value="3" selected>☆☆★★★</option>
+            <option value="4">☆★★★★</option>
+            <option value="5">★★★★★</option>
+          </select>
+        </div>
+        <div>
+          <label>Comment:</label>
+          <textarea name="review.comment" [(ngModel)]="review.comment"></textarea>
+        </div>
+        <input type="submit" value="Leave a review" />
+      </form>
+    </div>
+    <hr>
+  </div>
+</fieldset>
+
+
+

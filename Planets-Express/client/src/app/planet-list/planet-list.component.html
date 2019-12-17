@@ -1,0 +1,17 @@
+<table border=1>
+  <tr>
+    <th>Name</th>
+    <th>Color</th>
+    <th>Number of Moons</th>
+    <th>Has Rings?</th>
+    <th>Edit?</th>
+  </tr>
+  <tr *ngFor="let planet of planets">
+    <td>{{ planet.name }}</td>
+    <td>{{ planet.color }}</td>
+    <td>{{ planet.numMoons }}</td>
+    <td *ngIf="planet.hasRings">Yep</td>
+    <td *ngIf="!planet.hasRings">Nope</td>
+    <td><button [routerLink]="['/edit', planet._id]">Edit</button></td>
+  </tr>
+</table>

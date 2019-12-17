@@ -1,0 +1,10 @@
+div {
+    background: #e06666;   
+    width: 720px;
+    min-height: 500px;
+    display: inline-block;
+    
+    margin-right: 20px;
+    padding: 10px;
+    
+}
