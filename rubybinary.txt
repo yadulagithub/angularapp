@@ -1,0 +1,98 @@
+Read binary data from a file
+f = File.open('foo.dat', 'rb')
+f.read(2) # => 2-byte string
+f.read(10) # => 10-byte string
+f.close
+
+require 'stringio'
+io = StringIO.new "\x0d\x0e\x00\x40"
+io.read(2) # => "\x0d\x0e"
+io.read(1) # => "\x00"
+io.read(1) # => "\x40"
+io.read(1) # => nil
+
+
+
+str = "\x0d\x0e\x00\x40"
+str.bytes.to_a # => [13, 14, 0, 64]
+str.inspect # => "\r\x0E\x00@"
+str.hex_inspect # => "\x0d\x0e\x00\x40"
+
+https://www.visuality.pl/posts/cs-lessons-001-working-with-binary-files
+
+
+data = nil
+
+File.open("lena512.bmp", "rb") do |file|
+  data = file.read
+end
+
+require "pp"
+data = nil
+
+File.open("lena512.bmp", "rb") do |file|
+  data = file.read
+# read 14 bytes, this is the size of file header
+binary = file.read(14)
+
+# decode binary data
+  # A2 - arbitrary string, 2 is there because there are 2 bytes, "BM"
+  # L - this is bfSize, 4 bytes unsigned
+  # S - bfReserved1, 2 bytes unsigned
+  # S - bfReserved2, 2 bytes unsigned
+  # L - bfOffBites, 4 bytes unsigned
+  data = binary.unpack("A2 L S S L")
+  file_header = FileHeader.new(*data)
+
+  # read 40 bytes, this is the size of image header
+  binary = file.read(40)
+
+# decode binary data
+  # L - biSize, 4 bytes unsigned
+  # L - biWidth, 4 bytes unsigned
+  # L - biHeight, 4 bytes unsigned
+  # S - biPlanes, 2 bytes unsigned
+  # S - biBitCount, 2 bytes unsigned
+  # L - biCompression, 4 bytes unsigned
+  # L - biSizeImage, 4 bytes unsigned
+  # L - biXPelsPerMeter, 4 bytes unsigned
+  # L - biYPelsPerMeter, 4 bytes unsigned
+  # L - biClrUsed, 4 bytes unsigned
+  # L - biClrImportant, 4 bytes unsigned
+  data = binary.unpack("L L L S S L L L L L L")
+  image_header = ImageHeader.new(*data)
+
+  pp file_header
+  pp image_header
+
+# Read color table, which is 1024 bytes
+  color_table = file.read(1024)
+
+end
+
+
+require "pp"
+
+# define file header structure
+FileHeader = Struct.new(
+  :bfType,
+  :bfSize,
+  :bfReserved1,
+  :bfReserved2,
+  :bfOffbits
+)
+
+
+FILENAME="d:\\tmp\\file.bin"
+MEGABYTE = 1024*1024
+size = File.size(FILENAME)
+open(FILENAME, "rb") do |io| 
+  read = 0
+  while read < size
+    left = (size - read)
+    cur = left < MEGABYTE ? left : MEGABYTE
+    data = io.read(cur)
+    read += data.size
+    puts "READ #{cur} bytes" #yield data
+  end
+end

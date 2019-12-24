@@ -1,0 +1,11 @@
+download URU
+go to the URU directory and follow
+C:\tools> uru_rt admin install
+
+add ruby to uru
+C:\> uru admin add c:\ruby\jruby-1.7.18\bin\
+
+Retag
+C:\> uru admin retag 1718 jruby
+
+mysql_native_password mode
